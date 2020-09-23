@@ -1,0 +1,11 @@
+nav {
+  color: white;
+}
+nav li {
+  display: inline-block;
+}
+nav li a {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -1,11 +1,10 @@
-const DataModule = require("./modules/DataModule")
-
-//! import JS Files (just like Sass)
-
-import TheData from "modules/DataModule.js";
-
+//? import your packagess here
+import Person from "./modules/DataModule.js";
+import NavSystem from "./modules/TheNavModule.js";
 
 (() => {
-    
-    //! this is the module file
-})
+    //? stub  * just a place for non component specific stuff
+    console.log('loaded');
+    console.log(Person);
+
+})();

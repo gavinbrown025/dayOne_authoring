@@ -1,0 +1,25 @@
+
+.user-section {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 40px;
+    
+    .user {
+        width: 300px;
+        display: inline-block;
+        background-color: rgba(0,0,0,0.8);
+        padding: 8px 12px ;
+        border-radius: 10px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .user-name, .user-nickname, .user-role {
+            margin: 0;
+            padding: 0;
+        }
+    }
+}

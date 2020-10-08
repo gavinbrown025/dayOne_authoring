@@ -2,8 +2,8 @@
   border-radius: $radius;
 };
 
-@mixin addingPadding($values...) {
+@mixin addPadding($values...) {
   @each $var in $values {
     padding: #{$var};
   }
-} ;
+};

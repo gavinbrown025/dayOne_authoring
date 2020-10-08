@@ -1,23 +1,23 @@
 
-nav {
-  margin: 0;
+nav { 
+    margin: 0;
 
-  .nav-item {
-    display: inline-block;
-    background-color: blue;
-    @include roundCorners(8px);
-    @include addingPadding();
-    margin: 0 10px;
-
-    a {
-      cursor: pointer;
-      text-decoration: none;
+    .nav-item { 
+        display: inline-block; 
+        margin: 0 10px;
+        background-color: blue;
+        
+        @include roundCorners(8px);
+        @include addPadding(12px 8px);
+        
+       
+        a { cursor: pointer; 
+          text-decoration: none;  
+          color: white;
+        }
     }
-  }
 
-  :hover {
-    a {
-      color: pink;
+    :hover {
+        a { color: pink; }
     }
-  }
-};
+}

@@ -1,16 +1,34 @@
-//? import your packagess here
-import Team from "./modules/DataModule.js";
-//import NavSystem from "./modules/TheNavModule.js";
+
 
 (() => {
-    //? stub  * just a place for non component specific stuff
-    console.log('loaded');
-    console.log(Team);
 
-    let userSection = document.querySelector(".user-section").children;
-    
-    userSection[1].textContent = Team["Gavin"].name;
-    userSection[2].textContent = Team["Gavin"].nickname;
-    userSection[3].textContent = Team["Gavin"].role;
+    fetch('./data/DataSet.json')
+        .then(res => res.json())
+        .then(data => {
+            handleDataSet(data);
+        })
+        .catch((error) => console.log(error));
+
+
+      function handleDataSet(data) {
+        let userSection = document.querySelector('.user-section'),
+            userTemplate = document.querySelector('#user-template').content;
+
+        
+
+          for (let user in data) {
+            let currentUser = userTemplate.cloneNode(true),
+                currentUserText = currentUser.querySelector('.user').children;
+
+            currentUserText[0].textContent = data[user].name;
+            currentUserText[1].textContent = data[user].nickname;
+            currentUserText[2].textContent = data[user].role;
+
+            userSection.appendChild(currentUser);
+        } 
+        console.log(data);    
+    }
+
+    handleDataSet();
 
 })();

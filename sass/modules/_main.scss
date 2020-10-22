@@ -2,8 +2,9 @@
 // main rules go here
 
 body {
-  font: $main-font;
+  font-family: $main-font;
   font-size: $main-font-size;
+  color: $main-text-color;
 
   background-color: $main-bg-color;
 

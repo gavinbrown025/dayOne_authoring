@@ -12,21 +12,32 @@
         
         
         <nav class="main-nav">
-            <li><a href="" class="list-item">List 1</a></li>
-            <li><a href="" class="list-item">List 2</a></li>
-            <li><a href="" class="list-item">List 3</a></li>
-            <li><a href="" class="list-item">List 4</a></li>
+            <li class="nav-item"><a href="" >List 1</a></li>
+            <li class="nav-item"><a href="" >List 2</a></li>
+            <li class="nav-item"><a href="" >List 3</a></li>
+            <li class="nav-item"><a href="" >List 4</a></li>
         </nav> 
 
         <!-- add a users section here-->
-        <section class="user-section">
+        <div class="userCon">
             <h1 class="hidden">Our Users</h1>
+            <section class="user-section"></section>
+        </div>
+
+    </main>
+    <footer>
+        this is a simple footer
+    </footer>
+
+    <template id="user-template">
+        <div class="user">
             <h2 class="user-name"></h2>
             <p class="user-nickname"></p>
             <p class="user-role"></p>
-        </section>
+        </div>
+    </template>
+    
 
-    </main>
     <script src="js/main.js" type="module"></script>
 </body>
 </html>

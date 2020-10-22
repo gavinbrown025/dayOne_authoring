@@ -1,10 +1,14 @@
 
+.userCon {
+    margin: 40px 0;
+
+}
+
 .user-section {
 
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin: 40px;
     
     .user {
         width: 300px;
@@ -18,7 +22,7 @@
         align-items: center;
 
         .user-name, .user-nickname, .user-role {
-            margin: 0;
+            margin: 5px;
             padding: 0;
         }
     }

@@ -1,41 +1,38 @@
-// XHTTP is the old tried-and-true way of doing AJAX - still relevant, but there are better options
-    
-     // create an instance of the AJAX object
-    let myReq = new XMLHttpRequest;
+// import your packages here
+import { fetchData, postData } from "./modules/TheDataMiner.js";
 
-    // add an event handler so that we can track the stages of the request and respond accordingly
-    myReq.addEventListener('readystatechange', handleRequest);
+(() => {
+    // stub * just a place for non-component-specific stuff
+    console.log('loaded');
 
-    // get the request ready to go / configure it with method and resource request
-    myReq.open('GET', '../DataSet.json');
-    
-    // send the request off to the server
-    myReq.send();
-
-    // this is a passive listener function - it gets invoked for every stage of the AJAX request. When the request is done and the data payload is returned from the server it passes that data to the handleDataSet function
-    function handleRequest() {
-        if (myReq.readyState === XMLHttpRequest.DONE) {
-            // check status here and proceed
-            if (myReq.status === 200) {
-                // 200 means done and dusted, ready to go with the dataset!
-                handleDataSet(myReq.responseText);
-
-            } else {
-                // probably got some kind of error code, so handle that 
-                // a 404, 500 etc... can render appropriate error messages here
-                console.error(`${myReq.status} : something done broke, son`);
-            }
-        } else {
-            // request isn't ready yet, keep waiting...
-            console.log(`Request state: ${myReq.readyState}. Still processing...`);
-        }
-
+    function popErrorBox(message) {
+        alert("Something has gone horribly, horribly wrong");
     }
 
-    // this receives the data payload from our AJAX request, parses it (turns the returned JSON object back into a plain JavaScript object) and renders the data to our view (the markup in index.html)
     function handleDataSet(data) {
-        let myData = JSON.parse(data),
-            userSection = document.querySelector('.user-section'),
+        let userSection = document.querySelector('.user-section'),
             userTemplate = document.querySelector('#user-template').content;
 
-        debugger;
+        for (let user in data) {
+            let currentUser = userTemplate.cloneNode(true),
+                currentUserText = currentUser.querySelector('.user').children;
+
+            currentUserText[1].src = `images/${data[user].avatar}`;
+            currentUserText[2].textContent = data[user].name;
+            currentUserText[3].textContent = data[user].role;
+            currentUserText[4].textContent = data[user].nickname;
+
+            // add this new user to the view
+            userSection.appendChild(currentUser);
+        }
+    }
+
+
+    // we can add a catch handler to a thenable if things go wrong during our data retrieval attempt
+    // really, we should move all of this to an external class or function and pass arguments into it.
+
+    // that would make it really flexible and able to handle all kinds of requests and we could pass in a callback depending on what we want to do with our data
+
+    // but then we'd be on our way to rewriting the Axios API (you should research it)
+    fetchData("./includes/functions.php").then(data => handleDataSet(data)).catch(err => { console.log(err); popErrorBox(err); });
+})();

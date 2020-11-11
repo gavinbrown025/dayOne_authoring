@@ -28,9 +28,12 @@ import { fetchData, postData } from "./modules/DataMiner.js"
     }
 
     function retrieveProjectInfo() {
-        console.log(this.id);
-
-        fetchData(`./includes/index.php?id=${this.id}`).then(data => console.log(data)).catch(err => console.log(err));
+        //console.log(event.target.id);
+    //! event.target is which spcific thing you clicked within the event listener 
+        
+        if(!event.target.id){return} //! if target doesnt have id sytop funtion
+        
+        fetchData(`./includes/index.php?id=${event.target.id}`).then(data => console.log(data)).catch(err => console.log(err));
 
     }
 
@@ -45,11 +48,10 @@ import { fetchData, postData } from "./modules/DataMiner.js"
             currentUserText[0].src = `images/${thumbs[user].Avatar}`;
             currentUserText[0].id = thumbs[user].id;
 
-            console.log(currentUserText.children);
-
-            currentUserText[0].addEventListener("click", retrieveProjectInfo);
             userSection.appendChild(currentUser);
         }
+
+        userSection.addEventListener("click", retrieveProjectInfo);
     }
 
     fetchData("./includes/index.php").then(data => renderPortfolioThumbs(data)).catch(err => console.log(err));
